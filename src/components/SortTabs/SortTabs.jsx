@@ -1,13 +1,22 @@
 import styles from './SortTabs.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSort } from '../../store/slices/sortSlice';
 
-const tabs = ['Самый дешевый', 'Самый быстрый', 'Оптимальный'];
+const sortOptions = ['Самый дешевый', 'Самый быстрый', 'Оптимальный'];
 
 const SortTabs = () => {
+  const dispatch = useDispatch();
+  const selected = useSelector((state) => state.sort.selected);
+
   return (
     <div className={styles.tabs}>
-      {tabs.map((tab, idx) => (
-        <button key={idx} className={styles.tab}>
-          {tab}
+      {sortOptions.map((option) => (
+        <button
+          key={option}
+          onClick={() => dispatch(setSort(option))}
+          className={`${styles.tab} ${selected === option ? styles.active : ''}`}
+        >
+          {option}
         </button>
       ))}
     </div>

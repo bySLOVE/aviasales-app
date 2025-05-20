@@ -5,11 +5,7 @@ const Ticket = () => {
     <div className={styles.ticket}>
       <div className={styles.header}>
         <div className={styles.price}>13 400 Р</div>
-        <img
-          src="https://pics.avs.io/99/36/S7.png"
-          alt="S7 Airlines"
-          className={styles.logo}
-        />
+        <img src="https://pics.avs.io/99/36/S7.png" alt="S7 Airlines" className={styles.logo} />
       </div>
 
       <div className={styles.segment}>

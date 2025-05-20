@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import planeImage from '../../assets/plane.png'; // если добавишь вручную
+import planeImage from '../../assets/plane.png';
 
 const Header = () => {
   return (

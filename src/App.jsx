@@ -1,6 +1,6 @@
-import Header from './components/Header/Header'
-import Sidebar from './components/Sidebar/Sidebar'
-import SortTabs from './components/SortTabs/SortTabs'
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import SortTabs from './components/SortTabs/SortTabs';
 import TicketList from './components/TicketList/TicketList';
 import ShowMoreButton from './components/ShowMoreButton/ShowMoreButton';
 
@@ -22,4 +22,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
