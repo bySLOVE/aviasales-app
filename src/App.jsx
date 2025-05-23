@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTickets } from './store/slices/ticketsSlice';
+import { useDispatch } from 'react-redux';
+import { fetchAllTickets } from './store/slices/ticketsSlice';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import SortTabs from './components/SortTabs/SortTabs';
@@ -11,10 +11,9 @@ import styles from './App.module.scss';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { tickets, loading, error } = useSelector((state) => state.tickets);
 
   useEffect(() => {
-    dispatch(fetchTickets());
+    dispatch(fetchAllTickets());
   }, [dispatch]);
 
   return (
@@ -24,7 +23,7 @@ const App = () => {
         <Sidebar />
         <section className={styles.content}>
           <SortTabs />
-          <TicketList tickets={tickets} loading={loading} error={error} />
+          <TicketList />
           <ShowMoreButton />
         </section>
       </main>

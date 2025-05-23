@@ -1,35 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const AVAILABLE_TRANSFERS = [0, 1, 2, 3];
+
 const initialState = {
-  all: true,
-  transfers: {
-    0: true,
-    1: true,
-    2: true,
-    3: true,
-  },
+  selected: [...AVAILABLE_TRANSFERS],
 };
 
 const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    toggleAll(state) {
-      const newValue = !state.all;
-      state.all = newValue;
-      for (const key in state.transfers) {
-        state.transfers[key] = newValue;
+    toggleTransfer(state, action) {
+      const value = action.payload;
+      if (state.selected.includes(value)) {
+        state.selected = state.selected.filter((item) => item !== value);
+      } else {
+        state.selected.push(value);
       }
     },
-    toggleTransfer(state, action) {
-      const key = action.payload;
-      state.transfers[key] = !state.transfers[key];
-
-      const allSelected = Object.values(state.transfers).every(Boolean);
-      state.all = allSelected;
+    toggleAll(state) {
+      if (state.selected.length === AVAILABLE_TRANSFERS.length) {
+        state.selected = [];
+      } else {
+        state.selected = [...AVAILABLE_TRANSFERS];
+      }
     },
   },
 });
 
-export const { toggleAll, toggleTransfer } = filterSlice.actions;
+export const { toggleTransfer, toggleAll } = filterSlice.actions;
+export const availableTransfers = AVAILABLE_TRANSFERS;
 export default filterSlice.reducer;
