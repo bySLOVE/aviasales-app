@@ -22,7 +22,7 @@ const TicketList = () => {
   );
 
   if (tickets.length > 0 && filteredTickets.length === 0) {
-    return <p>Билеты не найдены</p>;
+    return <p>Рейсов, подходящих под заданные фильтры, не найдено</p>;
   }
 
   const sortedTickets = [...filteredTickets].sort((a, b) => {
